@@ -1,0 +1,18 @@
+services:
+  yf-erp-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: harwav-yf-erp-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - LLM_BASE_URL=https://opencode.ai/zen/go/v1
+      - LLM_MODEL=deepseek-v4-flash
+    networks:
+      - hermes-nas_default
+
+networks:
+  hermes-nas_default:
+    external: true

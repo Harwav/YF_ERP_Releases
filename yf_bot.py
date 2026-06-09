@@ -166,18 +166,20 @@ async def on_message(message: discord.Message):
 
     log.info(f"Processing message from {message.author}: {content[:80]}")
 
-    # Try LLM first
-    llm_messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
-        {"role": "user", "content": content},
-    ]
-    response = await llm_chat(llm_messages)
+    # Show typing indicator while LLM processes
+    async with message.channel.typing():
+        # Try LLM first
+        llm_messages = [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": content},
+        ]
+        response = await llm_chat(llm_messages)
 
-    if response:
-        await message.channel.send(response[:1900])
-    else:
-        fallback = get_fallback_response(content)
-        await message.channel.send(fallback)
+        if response:
+            await message.channel.send(response[:1900])
+        else:
+            fallback = get_fallback_response(content)
+            await message.channel.send(fallback)
 
 
 def get_fallback_response(content: str) -> str:

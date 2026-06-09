@@ -8,8 +8,8 @@ services:
     env_file:
       - .env
     environment:
-      - LLM_BASE_URL=https://opencode.ai/zen/go/v1
-      - LLM_MODEL=deepseek-v4-flash
+      - LLM_BASE_URL=https://api.minimax.chat/v1/text/chatcompletion_v2
+      - LLM_MODEL=MiniMax-M3
     networks:
       - hermes-nas_default
 

@@ -19,13 +19,13 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 TOKEN = os.getenv("DISCORD_BOT_TOKEN", "")
-LLM_API_KEY = os.getenv("OPENCODE_GO_API_KEY", "")
-LLM_BASE_URL = os.getenv("LLM_BASE_URL", "https://opencode.ai/zen/go/v1")
-LLM_MODEL = os.getenv("LLM_MODEL", "deepseek-v4-flash")
+LLM_API_KEY = os.getenv("MINIMAX_CN_API_KEY", "")
+LLM_BASE_URL = os.getenv("LLM_BASE_URL", "https://api.minimax.chat/v1/text/chatcompletion_v2")
+LLM_MODEL = os.getenv("LLM_MODEL", "MiniMax-M3")
 ALLOWED_USERS = os.getenv("ALLOWED_USERS", "")
 
 assert TOKEN, "DISCORD_BOT_TOKEN not set"
-assert LLM_API_KEY, "OPENCODE_GO_API_KEY not set"
+assert LLM_API_KEY, "MINIMAX_CN_API_KEY not set"
 
 ALLOWED_IDS = [uid.strip() for uid in ALLOWED_USERS.split(",") if uid.strip()]
 
